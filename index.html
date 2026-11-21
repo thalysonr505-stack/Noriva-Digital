@@ -1,20 +1,31 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#101923">
-  <meta name="description" content="Nóriva Digital — Desenvolvimento de sites profissionais, soluções digitais e presença online para empresas.">
-  <title>Nóriva Digital | Presença digital. Resultados reais.</title>
+  <meta name="theme-color" content="#080b09">
+  <meta name="description" content="Nóriva Digital — Independent digital studio creating modern websites and digital experiences for ambitious businesses.">
+  <meta name="keywords" content="Nóriva Digital, web design, web development, digital studio, websites">
+  <meta property="og:title" content="Nóriva Digital — Digital experiences built for growth">
+  <meta property="og:description" content="We build digital experiences that move businesses forward.">
+  <meta property="og:type" content="website">
+  <title>Nóriva Digital® — Digital Experiences</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #101923;
-      --surface: #17232f;
-      --gold: #c7ad7a;
-      --white: #f5f4f0;
-      --muted: #a4adb6;
-      --border: rgba(255,255,255,.10);
+      --bg: #080b09;
+      --surface: #101511;
+      --green: #00e676;
+      --white: #edf4ef;
+      --muted: #89958d;
+      --line: rgba(255,255,255,.12);
+      --mono: "DM Mono", monospace;
+      --sans: "Manrope", sans-serif;
     }
 
     * {
@@ -25,13 +36,24 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
     body {
       background: var(--bg);
       color: var(--white);
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      opacity: .12;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.15'/%3E%3C/svg%3E");
     }
 
     a {
@@ -39,407 +61,906 @@
       text-decoration: none;
     }
 
+    button {
+      font: inherit;
+    }
+
     .container {
-      width: min(1120px, 90%);
+      width: min(1160px, calc(100% - 48px));
       margin: auto;
     }
+
+    .mono {
+      font-family: var(--mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .green {
+      color: var(--green);
+    }
+
+    .topline {
+      height: 3px;
+      background: var(--green);
+      box-shadow: 0 0 20px var(--green);
+    }
+
+    /* NAVIGATION */
 
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: rgba(16,25,35,.94);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+      z-index: 20;
+      background: rgba(8,11,9,.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
     }
 
-    nav {
-      min-height: 76px;
+    .nav {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 24px;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: 3px;
+      letter-spacing: -.06em;
+      font-size: 20px;
     }
 
-    .logo span {
-      color: var(--gold);
+    .brand-symbol {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--green);
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      font-weight: 800;
+      transform: rotate(-8deg);
+    }
+
+    .brand small {
+      font-family: var(--mono);
+      font-size: 8px;
+      display: block;
+      color: var(--muted);
+      letter-spacing: .18em;
+      margin-top: 2px;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
       align-items: center;
-      font-size: 13px;
-      color: var(--muted);
+      gap: 30px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: #a8b3aa;
+      text-transform: uppercase;
     }
 
     .nav-links a:hover {
-      color: var(--gold);
+      color: var(--green);
     }
 
-    .button {
-      display: inline-block;
-      padding: 13px 22px;
-      border-radius: 5px;
-      background: var(--gold);
-      color: #101923;
-      font-size: 13px;
-      font-weight: 700;
+    .nav-cta {
+      border: 1px solid var(--green);
+      color: var(--green);
+      padding: 12px 17px;
+      font-family: var(--mono);
+      font-size: 10px;
+      text-transform: uppercase;
       transition: .25s;
     }
 
-    .button:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.1);
+    .nav-cta:hover {
+      background: var(--green);
+      color: #061009;
     }
 
+    .menu-toggle {
+      display: none;
+      color: var(--green);
+      background: none;
+      border: 1px solid var(--line);
+      padding: 10px 13px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
     .hero {
-      min-height: 650px;
+      min-height: 690px;
       display: flex;
       align-items: center;
-      padding: 100px 0;
-      background:
-        radial-gradient(ellipse at 85% 35%, rgba(199,173,122,.13), transparent 35%);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      border-radius: 50%;
+      right: -100px;
+      top: 10px;
+      background: radial-gradient(circle, rgba(0,230,118,.13), transparent 68%);
+      filter: blur(15px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      padding: 105px 0;
     }
 
     .eyebrow {
-      color: var(--gold);
+      color: var(--green);
+      font-family: var(--mono);
       font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 3px;
+      letter-spacing: .15em;
       text-transform: uppercase;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+    }
+
+    .eyebrow::before {
+      content: "●";
+      font-size: 9px;
+      margin-right: 10px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: .2; }
     }
 
     h1 {
-      max-width: 800px;
-      font-size: clamp(42px, 8vw, 76px);
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin-bottom: 25px;
+      font-size: clamp(58px, 10vw, 124px);
+      line-height: .91;
+      letter-spacing: -.09em;
+      font-weight: 800;
+      max-width: 900px;
     }
 
     h1 span {
-      color: var(--gold);
+      color: var(--green);
+      display: block;
     }
 
-    .hero p {
-      color: var(--muted);
-      max-width: 570px;
+    .hero-description {
+      color: #a0aaa2;
       font-size: 16px;
-      margin-bottom: 35px;
+      line-height: 1.8;
+      max-width: 490px;
+      margin: 32px 0;
     }
 
-    .section {
-      padding: 95px 0;
-      border-top: 1px solid var(--border);
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
     }
 
-    .section-title {
-      font-size: clamp(29px, 5vw, 43px);
-      margin-bottom: 15px;
-    }
-
-    .section-description {
-      color: var(--muted);
-      max-width: 600px;
-      margin-bottom: 42px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 18px;
-    }
-
-    .service {
-      background: var(--surface);
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
+      padding: 0 22px;
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
       transition: .25s;
     }
 
-    .service:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
+    .button-primary {
+      background: var(--green);
+      color: #061009;
+      font-weight: 500;
     }
 
-    .service .number {
-      color: var(--gold);
-      font-size: 12px;
-      letter-spacing: 2px;
+    .button-primary:hover {
+      box-shadow: 0 0 35px rgba(0,230,118,.3);
+      transform: translateY(-3px);
     }
 
-    .service h3 {
-      font-size: 19px;
-      margin: 20px 0 12px;
+    .button-outline {
+      border: 1px solid var(--line);
+      color: var(--white);
     }
 
-    .service p {
+    .button-outline:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .hero-index {
+      position: absolute;
+      right: 0;
+      bottom: 40px;
+      color: #657168;
+      font-family: var(--mono);
+      font-size: 10px;
+    }
+
+    .orb {
+      position: absolute;
+      right: 8%;
+      top: 24%;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,230,118,.25);
+      animation: rotate 25s linear infinite;
+      box-shadow: 0 0 70px rgba(0,230,118,.06), inset 0 0 70px rgba(0,230,118,.05);
+    }
+
+    .orb::before, .orb::after {
+      content: "";
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(0,230,118,.2);
+      border-radius: 50%;
+      transform: rotateX(65deg) rotateY(25deg);
+    }
+
+    .orb::after {
+      transform: rotateX(-65deg) rotateY(-25deg);
+    }
+
+    .orb-core {
+      position: absolute;
+      inset: 105px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00e676 0%, #006b3a 25%, transparent 70%);
+      filter: blur(10px);
+    }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    /* TICKER */
+
+    .ticker {
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      padding: 19px 0;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 35px;
+      animation: ticker 28s linear infinite;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .13em;
+      color: #87948a;
+    }
+
+    .ticker-track span {
+      color: var(--green);
+    }
+
+    @keyframes ticker {
+      to { transform: translateX(-50%); }
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      position: relative;
+    }
+
+    .section {
+      padding: 125px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      color: var(--green);
+      font-size: 10px;
+      letter-spacing: .15em;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -.075em;
+      max-width: 850px;
+    }
+
+    .section-title span {
+      color: var(--green);
+    }
+
+    /* MANIFESTO */
+
+    .manifesto-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 100px;
+      align-items: end;
+    }
+
+    .manifesto-copy {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 15px;
+      line-height: 1.9;
+      max-width: 430px;
     }
 
-    .about {
+    .manifesto-copy p + p {
+      margin-top: 18px;
+    }
+
+    .manifesto-mark {
+      font-size: 160px;
+      line-height: .8;
+      color: var(--green);
+      opacity: .8;
+      font-weight: 800;
+      letter-spacing: -.12em;
+      text-align: right;
+    }
+
+    /* WORK */
+
+    .work-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 55px;
+    }
+
+    .work-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 250px;
+    }
+
+    .projects {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 22px;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      background: #0c100d;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .project:hover {
+      border-color: rgba(0,230,118,.55);
+      transform: translateY(-5px);
+    }
+
+    .project-preview {
+      height: 320px;
+      padding: 20px;
+      background: #111a15;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .browser {
+      background: #080b09;
+      border: 1px solid #334137;
+      height: 100%;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .browser-top {
+      height: 27px;
+      border-bottom: 1px solid #263329;
+      display: flex;
       align-items: center;
+      gap: 5px;
+      padding: 0 10px;
     }
 
-    .about-box {
-      background: linear-gradient(145deg, #263442, #17232f);
-      border: 1px solid var(--border);
-      padding: 40px;
-      border-radius: 10px;
+    .browser-dot {
+      width: 6px;
+      height: 6px;
+      background: #627167;
+      border-radius: 50%;
     }
 
-    .about-box strong {
-      display: block;
-      font-size: 38px;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    .about-box p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .contact {
+    .browser-screen {
+      height: calc(100% - 27px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       text-align: center;
-      background: linear-gradient(120deg, #17232f, #263442);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 65px 25px;
+      padding: 25px;
+      background: radial-gradient(circle at center, #183528, #080b09 70%);
     }
 
-    .contact p {
-      color: var(--muted);
-      margin: 15px auto 25px;
-      max-width: 500px;
+    .browser-screen.blue {
+      background: radial-gradient(circle at center, #142d48, #080b09 70%);
     }
 
-    footer {
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
+    .browser-screen h3 {
+      font-size: clamp(23px, 3vw, 37px);
+      letter-spacing: -.07em;
+      line-height: 1;
+    }
+
+    .browser-screen p {
+      font-family: var(--mono);
+      color: #a6b7aa;
+      font-size: 8px;
+      margin-top: 13px;
+      letter-spacing: .12em;
+    }
+
+    .preview-line {
+      width: 90px;
+      height: 2px;
+      background: var(--green);
+      margin: 18px auto 0;
+    }
+
+    .project-info {
+      padding: 24px;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 9px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .project-info h3 {
+      font-size: 25px;
+      letter-spacing: -.05em;
+      margin-bottom: 9px;
+    }
+
+    .project-info p {
       color: var(--muted);
       font-size: 12px;
-      text-align: center;
+      line-height: 1.7;
     }
 
-    @media (max-width: 760px) {
-      .nav-links {
+    .project-link {
+      display: inline-block;
+      margin-top: 20px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--green);
+      text-transform: uppercase;
+    }
+
+    /* CAPABILITIES */
+
+    .capability-list {
+      margin-top: 55px;
+      border-top: 1px solid var(--line);
+    }
+
+    .capability {
+      display: grid;
+      grid-template-columns: 70px 1fr 1fr 25px;
+      align-items: center;
+      gap: 25px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      transition: .25s;
+    }
+
+    .capability:hover {
+      padding-left: 12px;
+    }
+
+    .capability-number {
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    .capability h3 {
+      font-size: 22px;
+      letter-spacing: -.05em;
+    }
+
+    .capability p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .capability-arrow {
+      color: var(--green);
+      font-size: 20px;
+    }
+
+    /* PROCESS */
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 55px;
+    }
+
+    .process-card {
+      border: 1px solid var(--line);
+      padding: 25px 20px;
+      min-height: 205px;
+      background: linear-gradient(145deg, #111712, #090c0a);
+    }
+
+    .process-card .number {
+      color: var(--green);
+      font-family: var(--mono);
+      font-size: 11px;
+    }
+
+    .process-card h3 {
+      font-size: 20px;
+      margin: 38px 0 12px;
+      letter-spacing: -.04em;
+    }
+
+    .process-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      padding: 140px 0;
+      overflow: hidden;
+    }
+
+    .contact::after {
+      content: "N";
+      position: absolute;
+      right: -20px;
+      bottom: -150px;
+      font-size: 500px;
+      line-height: 1;
+      color: rgba(0,230,118,.035);
+      font-weight: 800;
+      pointer-events: none;
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact h2 {
+      font-size: clamp(48px, 9vw, 105px);
+      line-height: .95;
+      letter-spacing: -.09em;
+      max-width: 900px;
+      margin-bottom: 35px;
+    }
+
+    .contact h2 span {
+      color: var(--green);
+    }
+
+    .contact-description {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+      max-width: 430px;
+      margin-bottom: 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 35px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: #718077;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-family: var(--mono);
+      font-size: 9px;
+      color: #a0aaa2;
+      text-transform: uppercase;
+    }
+
+    .footer-links a:hover {
+      color: var(--green);
+    }
+
+    /* REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+      .orb {
+        width: 220px;
+        height: 220px;
+        right: -65px;
+        top: 18%;
+        opacity: .55;
+      }
+
+      .orb-core {
+        inset: 75px;
+      }
+
+      .manifesto-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .manifesto-mark {
+        font-size: 110px;
+        text-align: left;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .capability {
+        grid-template-columns: 35px 1fr 25px;
+      }
+
+      .capability p {
+        display: none;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .container {
+        width: min(100% - 36px, 1160px);
+      }
+
+      .nav {
+        min-height: 68px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-cta {
         display: none;
       }
 
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        width: 100%;
+        padding: 25px 22px;
+        background: #0b100c;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
       .hero {
-        min-height: 560px;
+        min-height: 650px;
       }
 
-      .services {
-        grid-template-columns: 1fr;
+      .hero-content {
+        padding: 100px 0 125px;
       }
 
-      .about {
-        grid-template-columns: 1fr;
-        gap: 30px;
+      h1 {
+        font-size: clamp(55px, 15vw, 85px);
+      }
+
+      .hero-description {
+        font-size: 14px;
+        max-width: 340px;
+      }
+
+      .orb {
+        width: 180px;
+        height: 180px;
+        top: 12%;
+        right: -80px;
+        opacity: .35;
+      }
+
+      .orb-core {
+        inset: 60px;
       }
 
       .section {
-        padding: 70px 0;
+        padding: 85px 0;
+      }
+
+      .work-heading {
+        display: block;
+      }
+
+      .work-note {
+        margin-top: 20px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .project-preview {
+        height: 260px;
+      }
+
+      .process-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .process-card {
+        min-height: 185px;
+        padding: 18px 14px;
+      }
+
+      .process-card h3 {
+        font-size: 17px;
+        margin-top: 30px;
+      }
+
+      .contact {
+        padding: 100px 0;
+      }
+
+      .contact::after {
+        font-size: 300px;
+        bottom: -60px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
   </style>
 </head>
 
 <body>
+  <div class="topline"></div>
 
   <header>
-    <div class="container">
-      <nav>
-        <a class="logo" href="#">NÓRIVA<span>.</span></a>
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <span class="brand-symbol">N</span>
+        <span>NÓRIVA<small>DIGITAL STUDIO</small></span>
+      </a>
 
-        <div class="nav-links">
-          <a href="#inicio">Início</a>
-          <a href="#servicos">Serviços</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#contato">Contato</a>
-        </div>
-
-        <a class="button" href="#contato">Fale conosco</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#work">Selected work</a>
+        <a href="#services">Capabilities</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
       </nav>
+
+      <a class="nav-cta" href="#contact">Start a project ↗</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">MENU</button>
     </div>
   </header>
 
   <main>
+    <section class="hero" id="home">
+      <div class="orb"><div class="orb-core"></div></div>
 
-    <section class="hero" id="inicio">
       <div class="container">
-        <div class="eyebrow">ESTRATÉGIA · DESIGN · TECNOLOGIA</div>
+        <div class="hero-content">
+          <div class="eyebrow">Independent digital studio · Brazil / Worldwide</div>
 
-        <h1>
-          Sua empresa merece uma
-          <span>presença digital</span>
-          extraordinária.
-        </h1>
+          <h1>
+            WE BUILD
+            <span>DIGITAL</span>
+            WORLDS.
+          </h1>
 
-        <p>
-          Desenvolvemos experiências digitais profissionais
-          para empresas que desejam fortalecer sua marca,
-          conquistar clientes e crescer no ambiente online.
-        </p>
-
-        <a class="button" href="#contato">
-          Conheça nossas soluções →
-        </a>
-      </div>
-    </section>
-
-    <section class="section" id="servicos">
-      <div class="container">
-        <div class="eyebrow">O QUE FAZEMOS</div>
-
-        <h2 class="section-title">
-          Soluções digitais para o seu negócio.
-        </h2>
-
-        <p class="section-description">
-          Tecnologia, apresentação e funcionalidade
-          trabalhando juntas para fortalecer sua empresa.
-        </p>
-
-        <div class="services">
-
-          <article class="service">
-            <div class="number">01 / DESENVOLVIMENTO</div>
-            <h3>Sites profissionais</h3>
-            <p>
-              Sites modernos, responsivos e personalizados
-              para apresentar sua empresa na internet.
-            </p>
-          </article>
-
-          <article class="service">
-            <div class="number">02 / PRESENÇA DIGITAL</div>
-            <h3>Landing pages</h3>
-            <p>
-              Páginas estratégicas para apresentar produtos,
-              serviços e facilitar o contato com clientes.
-            </p>
-          </article>
-
-          <article class="service">
-            <div class="number">03 / CONTINUIDADE</div>
-            <h3>Manutenção e suporte</h3>
-            <p>
-              Atualizações, melhorias e acompanhamento
-              técnico para manter seu site funcionando.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="sobre">
-      <div class="container about">
-
-        <div>
-          <div class="eyebrow">SOBRE A NÓRIVA</div>
-
-          <h2 class="section-title">
-            Mais do que um site. Uma presença profissional.
-          </h2>
-
-          <p class="section-description">
-            A Nóriva Digital trabalha para transformar
-            necessidades empresariais em soluções digitais
-            funcionais, elegantes e acessíveis.
-          </p>
-        </div>
-
-        <div class="about-box">
-          <strong>01.</strong>
-          <h3>Seu negócio, conectado ao futuro.</h3>
-          <p>
-            Cada projeto é pensado para comunicar
-            profissionalismo, transmitir confiança e
-            facilitar a experiência dos seus clientes.
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-    <section class="section" id="contato">
-      <div class="container">
-        <div class="contact">
-          <div class="eyebrow">VAMOS CONVERSAR?</div>
-
-          <h2 class="section-title">
-            Seu próximo projeto começa aqui.
-          </h2>
-
-          <p>
-            Entre em contato para conversar sobre
-            as necessidades da sua empresa e conhecer
-            nossas soluções digitais.
+          <p class="hero-description">
+            We design and develop modern digital experiences
+            that help businesses build their presence, connect
+            with people and move forward.
           </p>
 
-          <a class="button" href="https://wa.me/5585974005691?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20N%C3%B3riva%20Digital%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Solicitar um orçamento</a>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">Explore our work ↗</a>
+            <a class="button button-outline" href="#contact">Start a conversation</a>
+          </div>
         </div>
+
+        <div class="hero-index mono">ND® — DIGITAL EXPERIENCES / 001</div>
       </div>
     </section>
 
-  </main>
-
-  <footer>
-    <div class="container">
-      © <span id="year"></span> Nóriva Digital.
-      Todos os direitos reservados.
+    <div class="ticker">
+      <div class="ticker-track">
+        <span>●</span> DIGITAL DESIGN <span>✳</span> WEB DEVELOPMENT
+        <span>●</span> CREATIVE THINKING <span>✳</span> DIGITAL EXPERIENCES
+        <span>●</span> DIGITAL DESIGN <span>✳</span> WEB DEVELOPMENT
+        <span>●</span> CREATIVE THINKING <span>✳</span> DIGITAL EXPERIENCES
+      </div>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
-  
-  <a href="https://wa.me/5585974005691?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20N%C3%B3riva%20Digital%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
-   class="whatsapp-float"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Fale conosco pelo WhatsApp">
-   WhatsApp
-</a>
-
-<style>
-.whatsapp-float {
-    position: fixed;
-    width: 145px;
-    bottom: 22px;
-    right: 20px;
-    background: #25D366;
-    color: #fff;
-    text-align: center;
-    padding: 14px 12px;
-    border-radius: 40px;
-    font-weight: bold;
-    text-decoration: none;
-    z-index: 9999;
-    box-shadow: 0 4px 12px rgba(0,0,0,.25);
-
-  }
-</style>
-
-</body>
-</html>
-  
+    <section class="section" id="about">
+      <div class="container manifesto-grid">
+        <div class="reveal">
+          <div class="section-label">01 / The manifesto</div>
+          <h2 class="section-title">
+            THE DIGITAL<br>
+            WORLD IS YOUR<br>
+            <span>NEXT FRONTIER.</span
